@@ -13,6 +13,8 @@ python -m http.server 8766
 
 Otvori <http://localhost:8766>. Lokalni server je potreban jer preglednik ne učitava ES module preko `file://`.
 
+Prije objave promjena u CSS-u ili JS-u pokreni `python tools/verzija.py` (upisuje verzije datoteka u `index.html` da preglednici ne koriste staru verziju iz cachea).
+
 ## Tehnologija
 
 Čisti HTML, CSS i JavaScript (ES moduli), WebGL 1 i Canvas 2D. Nema ovisnosti ni build koraka. Fontovi se učitavaju s Google Fontsa.

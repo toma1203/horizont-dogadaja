@@ -9,6 +9,10 @@ python -m http.server 8766
 ```
 pa otvori http://localhost:8766. Ako `.claude/launch.json` ne postoji, napravi ga (python -m http.server 8766, port 8766), po uzoru na `projekt 1`.
 
+## Objava (GitHub Pages)
+Repo: `toma1203/horizont-dogadaja`, Pages se objavljuje s grane `main` na https://toma1203.github.io/horizont-dogadaja/.
+**Prije svakog commita koji mijenja CSS ili JS pokreni `python tools/verzija.py`.** Skripta upisuje hash sadržaja (`?v=…`) uz `style.css` i u `<script type="importmap">` za sve JS module. Pages šalje `max-age=600`, pa bi bez toga preglednik nakon deploya miješao stare i nove module. Novi modul u `js/` skripta sama doda u import mapu.
+
 ## Struktura
 ```
 index.html               markup svih poglavlja (SVG dijagrami su inline)
@@ -19,6 +23,7 @@ js/nav.js                isticanje aktivnog poglavlja u navigaciji
 js/blackhole/shaders.js  GLSL: raytracing geodezija fotona u Schwarzschildovoj metrici
 js/blackhole/renderer.js WebGL setup, kamera, kontrole, adaptivna rezolucija
 js/chapters/*.js         po jedan modul za poglavlja I–VII
+tools/verzija.py         cache busting: upisuje ?v=<hash> u index.html (pokreni prije commita)
 ```
 
 ## Poglavlja (stanje)

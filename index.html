@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400..600&display=swap">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.css?v=b8b1d477">
 </head>
 <body>
 <nav class="top" aria-label="Poglavlja">
@@ -311,6 +311,24 @@
 <footer>
   <div class="wrap"><span class="brand"><i aria-hidden="true"></i>Horizont događaja</span><p>Simulacija koristi geodezijsku jednadžbu svjetlosti u Schwarzschildovoj metrici (jedinice R<sub>s</sub> = 1), Shakura–Sunjajevljev temperaturni profil diska te relativistički Doppler i gravitacijski crveni pomak. Rotacija crne rupe (Kerr) nije uključena.</p></div>
 </footer>
-<script type="module" src="js/main.js"></script>
+<script type="importmap">
+{
+  "imports": {
+    "./js/blackhole/renderer.js": "./js/blackhole/renderer.js?v=8a29566e",
+    "./js/blackhole/shaders.js": "./js/blackhole/shaders.js?v=d0610bb5",
+    "./js/chapters/anatomy.js": "./js/chapters/anatomy.js?v=999763c8",
+    "./js/chapters/hawking.js": "./js/chapters/hawking.js?v=3d64b27b",
+    "./js/chapters/history.js": "./js/chapters/history.js?v=f91afe25",
+    "./js/chapters/orbits.js": "./js/chapters/orbits.js?v=7c266efb",
+    "./js/chapters/radius.js": "./js/chapters/radius.js?v=42814ff6",
+    "./js/chapters/tidal.js": "./js/chapters/tidal.js?v=ba9a38b6",
+    "./js/chapters/time.js": "./js/chapters/time.js?v=f90feee2",
+    "./js/main.js": "./js/main.js?v=b9667a1e",
+    "./js/nav.js": "./js/nav.js?v=e987e8ba",
+    "./js/util.js": "./js/util.js?v=04ff88fd"
+  }
+}
+</script>
+<script type="module" src="js/main.js?v=b9667a1e"></script>
 </body>
 </html>
