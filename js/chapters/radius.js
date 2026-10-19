@@ -1,5 +1,5 @@
 // Poglavlje I — Schwarzschildov polumjer, sjena i prosječna gustoća.
-import { $, G, C, MSUN, AU, COL, sci, len, loc, fitCanvas, onResize } from '../util.js';
+import { $, G, C, MSUN, AU, COL, sci, len, loc, fitCanvas, onResize, paintRange } from '../util.js';
 
 const REFS = [
   { n: 'grašak', r: 0.004 },
@@ -51,13 +51,13 @@ export function initRadius() {
 
     const R = Math.max(1.5, rs * scale);
     const g = ctx.createRadialGradient(cx1, cy, R * 0.9, cx1, cy, R * 2.2);
-    g.addColorStop(0, 'rgba(255,173,92,.55)');
-    g.addColorStop(1, 'rgba(255,173,92,0)');
+    g.addColorStop(0, 'rgba(184,255,92,.55)');
+    g.addColorStop(1, 'rgba(184,255,92,0)');
     ctx.fillStyle = g; ctx.beginPath(); ctx.arc(cx1, cy, R * 2.2, 0, Math.PI * 2); ctx.fill();
     ctx.fillStyle = '#000'; ctx.beginPath(); ctx.arc(cx1, cy, R, 0, Math.PI * 2); ctx.fill();
-    ctx.strokeStyle = COL.ember; ctx.lineWidth = 1.5; ctx.stroke();
+    ctx.strokeStyle = COL.accent; ctx.lineWidth = 1.5; ctx.stroke();
 
-    ctx.fillStyle = COL.dim; ctx.font = '11px "JetBrains Mono", monospace'; ctx.textAlign = 'center';
+    ctx.fillStyle = COL.dim; ctx.font = '11px "Geist Mono", monospace'; ctx.textAlign = 'center';
     ctx.fillText('HORIZONT', cx1, h - 10);
     ctx.fillText(best.n.toUpperCase(), cx2, h - 10);
   }
@@ -67,6 +67,7 @@ export function initRadius() {
     const b = e.target.closest('button');
     if (!b) return;
     slider.value = Math.log10(+b.dataset.m);
+    paintRange(slider);
     draw();
   });
   onResize(draw);

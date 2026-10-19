@@ -1,6 +1,6 @@
 // Poglavlje VI — Hawkingova temperatura i vrijeme isparavanja.
 // T = ħc³ / (8πGMk_B),  t = 5120πG²M³ / (ħc⁴)
-import { $, G, C, HBAR, KB, YEAR, COL, sci, sup, len, dur, fitCanvas, onResize } from '../util.js';
+import { $, G, C, HBAR, KB, YEAR, COL, sci, sup, len, dur, fitCanvas, onResize, paintRange } from '../util.js';
 
 const T_CMB = 2.725;
 const AGE = 13.8e9 * YEAR;
@@ -45,7 +45,7 @@ export function initHawking() {
     const X = (m) => pad.l + ((m - mx0) / (mx1 - mx0)) * (w - pad.l - pad.r);
     const Y = (t) => pad.t + (1 - (t - ty0) / (ty1 - ty0)) * (h - pad.t - pad.b);
 
-    ctx.font = '10px "JetBrains Mono", monospace';
+    ctx.font = '10px "Geist Mono", monospace';
     ctx.fillStyle = COL.dim; ctx.strokeStyle = COL.line;
     for (let t = -10; t <= 15; t += 5) {
       ctx.beginPath(); ctx.moveTo(pad.l, Y(t)); ctx.lineTo(w - pad.r, Y(t)); ctx.stroke();
@@ -61,7 +61,7 @@ export function initHawking() {
     ctx.strokeStyle = COL.ink; ctx.lineWidth = 1.6;
     ctx.beginPath(); ctx.moveTo(X(mx0), Y(Tl(mx0))); ctx.lineTo(X(mx1), Y(Tl(mx1))); ctx.stroke();
     const m = +slider.value;
-    ctx.fillStyle = COL.ember; ctx.beginPath(); ctx.arc(X(m), Y(Tl(m)), 5, 0, 7); ctx.fill();
+    ctx.fillStyle = COL.accent; ctx.beginPath(); ctx.arc(X(m), Y(Tl(m)), 5, 0, 7); ctx.fill();
   }
 
   slider.addEventListener('input', update);
@@ -69,6 +69,7 @@ export function initHawking() {
     const b = e.target.closest('button');
     if (!b) return;
     slider.value = Math.log10(+b.dataset.kg);
+    paintRange(slider);
     update();
   });
   onResize(update);

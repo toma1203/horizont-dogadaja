@@ -1,6 +1,6 @@
 // WebGL renderer za hero simulaciju: kamera, kontrole, adaptivna rezolucija.
 import { VERTEX_SHADER, FRAGMENT_SHADER } from './shaders.js';
-import { $, loc, addAnim, reduceMotion } from '../util.js';
+import { $, loc, addAnim, reduceMotion, paintRange } from '../util.js';
 
 export function initBlackHole() {
   const stage = $('stage');
@@ -128,6 +128,7 @@ export function initBlackHole() {
     S.yaw -= dx * 0.006;
     S.inc = Math.max(-80, Math.min(80, S.inc + dy * 0.25));
     cInc.value = S.inc;
+    paintRange(cInc);
     $('oInc').textContent = Math.round(S.inc) + '°';
     updHud();
   });
@@ -137,6 +138,7 @@ export function initBlackHole() {
     e.preventDefault();
     S.dist = Math.max(6, Math.min(45, S.dist * (1 + e.deltaY * 0.001)));
     cDist.value = S.dist;
+    paintRange(cDist);
     $('oDist').textContent = loc(S.dist) + ' Rs';
     updHud();
   }, { passive: false });

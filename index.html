@@ -7,29 +7,34 @@
 <meta name="description" content="Interaktivni vodič kroz fiziku crnih rupa s raytracing simulacijom u stvarnom vremenu.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..600&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400..600&display=swap">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <nav class="top" aria-label="Poglavlja">
   <div class="wrap">
-    <span class="brand">Horizont</span>
+   <div class="bar">
+    <a class="brand" href="#sim"><i aria-hidden="true"></i><span>Horizont</span></a>
     <div class="links" id="navlinks">
       <a href="#sim">Simulacija</a>
-      <a href="#polumjer">I · Polumjer</a>
-      <a href="#anatomija">II · Anatomija</a>
-      <a href="#orbite">III · Orbite</a>
-      <a href="#vrijeme">IV · Vrijeme</a>
-      <a href="#plima">V · Plima</a>
-      <a href="#hawking">VI · Hawking</a>
-      <a href="#povijest">VII · Povijest</a>
+      <a href="#polumjer"><span class="n">01</span>Polumjer</a>
+      <a href="#anatomija"><span class="n">02</span>Anatomija</a>
+      <a href="#orbite"><span class="n">03</span>Orbite</a>
+      <a href="#vrijeme"><span class="n">04</span>Vrijeme</a>
+      <a href="#plima"><span class="n">05</span>Plima</a>
+      <a href="#hawking"><span class="n">06</span>Hawking</a>
+      <a href="#povijest"><span class="n">07</span>Povijest</a>
     </div>
+   </div>
   </div>
 </nav>
 
 <header class="hero wrap" id="sim">
   <div class="hero-head">
-    <h1>Horizont<br><em>događaja</em></h1>
+    <div>
+      <span class="badge"><span class="pulse"></span>Raytracing uživo · WebGL</span>
+      <h1>Horizont<br><span class="grad">događaja</span></h1>
+    </div>
     <p class="lede">Svaki piksel ispod je zraka svjetlosti praćena unatrag kroz zakrivljeni prostor-vrijeme oko Schwarzschildove crne rupe. Izračun se odvija u stvarnom vremenu, na tvojoj grafičkoj kartici.</p>
   </div>
   <div class="stage" id="stage">
@@ -37,7 +42,7 @@
     <div class="hint">povuci za okretanje</div>
     <div class="hud" id="hud">r = 22 Rs · nagib 9°</div>
   </div>
-  <div class="controls">
+  <div class="controls card">
     <div class="ctl">
       <div class="row"><label class="label" for="cDist">Udaljenost kamere</label><output id="oDist" class="num">22 Rs</output></div>
       <input type="range" id="cDist" min="6" max="45" step="0.5" value="22">
@@ -60,17 +65,17 @@
     </div>
   </div>
   <div class="legend">
-    <div><span class="label">Sjena</span><h3>Crni krug</h3><p>Promjer sjene je oko 5,2 Rs, više od dva i pol puta veći od samog horizonta, jer gravitacija uvlači i zrake koje bi ga inače promašile.</p></div>
-    <div><span class="label">Fotonski prsten</span><h3>Tanka svijetla linija</h3><p>Svjetlost koja je jednom ili više puta obišla crnu rupu na 1,5 Rs prije nego je pobjegla prema kameri.</p></div>
-    <div><span class="label">Leća</span><h3>Disk iznad vrha</h3><p>Luk preko vrha nije drugi disk. To je stražnja strana istog diska, čiju je svjetlost gravitacija savila prema tebi.</p></div>
-    <div><span class="label">Doppler</span><h3>Jedna strana sjajnija</h3><p>Plin se giba do pola brzine svjetlosti. Strana koja ide prema nama je plavija i višestruko sjajnija.</p></div>
+    <div class="card"><span class="label">Sjena</span><h3>Crni krug</h3><p>Promjer sjene je oko 5,2 Rs, više od dva i pol puta veći od samog horizonta, jer gravitacija uvlači i zrake koje bi ga inače promašile.</p></div>
+    <div class="card"><span class="label">Fotonski prsten</span><h3>Tanka svijetla linija</h3><p>Svjetlost koja je jednom ili više puta obišla crnu rupu na 1,5 Rs prije nego je pobjegla prema kameri.</p></div>
+    <div class="card"><span class="label">Leća</span><h3>Disk iznad vrha</h3><p>Luk preko vrha nije drugi disk. To je stražnja strana istog diska, čiju je svjetlost gravitacija savila prema tebi.</p></div>
+    <div class="card"><span class="label">Doppler</span><h3>Jedna strana sjajnija</h3><p>Plin se giba do pola brzine svjetlosti. Strana koja ide prema nama je plavija i višestruko sjajnija.</p></div>
   </div>
 </header>
 
 <main class="wrap">
 
 <section class="ch" id="polumjer">
-  <div class="ch-head"><div class="ch-num">I</div><div><span class="label">Brzina oslobađanja</span><h2>Koliko mora biti malo da postane crna rupa?</h2></div></div>
+  <div class="ch-head"><span class="ch-tag"><span class="ch-num">01</span>Brzina oslobađanja</span><h2>Koliko mora biti malo da postane crna rupa?</h2></div>
   <div class="ch-body">
     <div class="prose">
       <p>Da bi napustio Zemlju, projektil treba oko 11,2 km/s. Što je tijelo masivnije i kompaktnije, ta brzina raste. <strong>Crna rupa nastaje kada brzina oslobađanja dosegne brzinu svjetlosti.</strong> Ništa, pa ni svjetlost, više ne može pobjeći.</p>
@@ -80,7 +85,7 @@
       <div class="eq">ρ = M / (⁴⁄₃ π R<sub>s</sub>³) = 3c⁶ / (32 π G³ M²)</div>
       <p class="note">Masu zadaješ u Sunčevim masama (M☉ = 1,989 × 10³⁰ kg).</p>
     </div>
-    <div class="inst">
+    <div class="inst card">
       <div class="ctl">
         <div class="row"><label class="label" for="mSlider">Masa</label><output id="mOut" class="num">1 M☉</output></div>
         <input type="range" id="mSlider" min="-6" max="10.5" step="0.01" value="0">
@@ -105,15 +110,15 @@
 </section>
 
 <section class="ch" id="anatomija">
-  <div class="ch-head"><div class="ch-num">II</div><div><span class="label">Karakteristični polumjeri</span><h2>Anatomija crne rupe</h2></div></div>
+  <div class="ch-head"><span class="ch-tag"><span class="ch-num">02</span>Karakteristični polumjeri</span><h2>Anatomija crne rupe</h2></div>
   <div class="ch-body">
     <div class="prose">
       <p>Nerotirajuća crna rupa opisana je jednim brojem, masom. Iz nje slijede sve karakteristične granice, a svaka je jednostavan višekratnik Schwarzschildova polumjera.</p>
       <p>Između horizonta i stabilnog diska postoje zone u kojima fizika postaje sve neobičnija: svjetlost može kružiti, ali nestabilno; materija više ne može stabilno orbitirati i spiralno pada prema unutra.</p>
       <p class="note">Crtež je pogled odozgo, okomito na disk. Polumjeri su u stvarnom omjeru. Odaberi zonu da je istakneš.</p>
-      <div class="anat-desc" id="anatDesc"></div>
+      <div class="anat-desc card" id="anatDesc"></div>
     </div>
-    <div class="inst">
+    <div class="inst card">
       <div class="anat">
         <svg viewBox="0 0 520 520" role="img" aria-label="Presjek crne rupe s označenim polumjerima">
           <defs>
@@ -132,8 +137,8 @@
           <circle class="ring dash" id="r-shadow" cx="260" cy="260" r="83.1"/>
           <circle class="ring" id="r-isco" cx="260" cy="260" r="96"/>
           <circle class="ring dash" id="r-disk" cx="260" cy="260" r="240"/>
-          <circle id="r-sing" cx="260" cy="260" r="2.5" fill="#ebe6dc"/>
-          <g id="photonDot"><circle r="3.5" fill="#93c9ff"/></g>
+          <circle id="r-sing" cx="260" cy="260" r="2.5" style="fill:var(--ink)"/>
+          <g id="photonDot"><circle r="3.5" style="fill:var(--ion)"/></g>
           <text class="rlabel" x="296" y="232">1 Rs</text>
           <text class="rlabel" x="300" y="212">1,5</text>
           <text class="rlabel" x="320" y="192">2,6</text>
@@ -147,7 +152,7 @@
 </section>
 
 <section class="ch" id="orbite">
-  <div class="ch-head"><div class="ch-num">III</div><div><span class="label">Efektivni potencijal</span><h2>Zašto orbite blizu crne rupe nisu elipse</h2></div></div>
+  <div class="ch-head"><span class="ch-tag"><span class="ch-num">03</span>Efektivni potencijal</span><h2>Zašto orbite blizu crne rupe nisu elipse</h2></div>
   <div class="ch-body">
     <div class="prose">
       <p>Kod Newtona planet s dovoljno kutne količine gibanja zauvijek kruži po zatvorenoj elipsi. Opća relativnost dodaje jedan član u efektivnom potencijalu, i on mijenja sve.</p>
@@ -158,7 +163,7 @@
       <p><strong>ISCO.</strong> Ispod L = √12 ≈ 3,46 minimum nestaje. Najmanja stabilna kružna orbita je na r = 6M = 3 Rs, i tamo završava unutarnji rub akrecijskog diska.</p>
       <p class="note">Udaljenosti su u jedinicama M (r = 2M je horizont). Kreće se iz mirovanja u radijalnom smjeru na r₀.</p>
     </div>
-    <div class="inst">
+    <div class="inst card">
       <canvas id="potCanvas" height="200" aria-label="Graf efektivnog potencijala"></canvas>
       <canvas id="orbCanvas" height="340" aria-label="Simulirana orbita"></canvas>
       <div class="ctl">
@@ -175,7 +180,7 @@
 </section>
 
 <section class="ch" id="vrijeme">
-  <div class="ch-head"><div class="ch-num">IV</div><div><span class="label">Gravitacijska dilatacija vremena</span><h2>Sat blizu horizonta kasni</h2></div></div>
+  <div class="ch-head"><span class="ch-tag"><span class="ch-num">04</span>Gravitacijska dilatacija vremena</span><h2>Sat blizu horizonta kasni</h2></div>
   <div class="ch-body">
     <div class="prose">
       <p>Gravitacija ne savija samo prostor nego i vrijeme. Sat koji miruje na udaljenosti r od crne rupe kuca sporije od sata daleko od nje:</p>
@@ -184,10 +189,10 @@
       <p>Kako se približavaš horizontu, faktor teži nuli. Za udaljenog promatrača predmet koji pada nikad ne prelazi horizont; usporava, crveni se i blijedi. Onaj koji pada ne primjećuje ništa posebno i prelazi horizont u konačnom vlastitom vremenu.</p>
       <p class="note">Formula vrijedi za promatrača koji lebdi na mjestu, što blizu horizonta zahtijeva golemu silu potiska.</p>
     </div>
-    <div class="inst">
+    <div class="inst card">
       <div class="clocks">
-        <div class="clock"><svg viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="92" fill="none" stroke="#2a3042" stroke-width="2"/><g id="ticksFar"></g><line id="handFar" x1="100" y1="100" x2="100" y2="22" stroke="#93c9ff" stroke-width="3" stroke-linecap="round"/><circle cx="100" cy="100" r="5" fill="#93c9ff"/></svg><span class="label">Daleki promatrač</span><span class="num" id="cntFar">0,0 s</span></div>
-        <div class="clock"><svg viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="92" fill="none" stroke="#2a3042" stroke-width="2"/><g id="ticksNear"></g><line id="handNear" x1="100" y1="100" x2="100" y2="22" stroke="#ffad5c" stroke-width="3" stroke-linecap="round"/><circle cx="100" cy="100" r="5" fill="#ffad5c"/></svg><span class="label">Kod crne rupe</span><span class="num" id="cntNear">0,0 s</span></div>
+        <div class="clock"><svg viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="92" fill="none" stroke="#262a36" stroke-width="2"/><g id="ticksFar"></g><line id="handFar" x1="100" y1="100" x2="100" y2="22" style="stroke:var(--ion)" stroke-width="3" stroke-linecap="round"/><circle cx="100" cy="100" r="5" style="fill:var(--ion)"/></svg><span class="label">Daleki promatrač</span><span class="num" id="cntFar">0,0 s</span></div>
+        <div class="clock"><svg viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="92" fill="none" stroke="#262a36" stroke-width="2"/><g id="ticksNear"></g><line id="handNear" x1="100" y1="100" x2="100" y2="22" style="stroke:var(--accent)" stroke-width="3" stroke-linecap="round"/><circle cx="100" cy="100" r="5" style="fill:var(--accent)"/></svg><span class="label">Kod crne rupe</span><span class="num" id="cntNear">0,0 s</span></div>
       </div>
       <div class="ctl">
         <div class="row"><label class="label" for="tSlider">Udaljenost od središta</label><output id="tOut" class="num">1,5 Rs</output></div>
@@ -203,7 +208,7 @@
 </section>
 
 <section class="ch" id="plima">
-  <div class="ch-head"><div class="ch-num">V</div><div><span class="label">Plimne sile</span><h2>Špagetifikacija</h2></div></div>
+  <div class="ch-head"><span class="ch-tag"><span class="ch-num">05</span>Plimne sile</span><h2>Špagetifikacija</h2></div>
   <div class="ch-body">
     <div class="prose">
       <p>Ne ubija gravitacija sama po sebi, nego njezina razlika. Ako padaš nogama naprijed, stopala osjećaju jače privlačenje od glave. Tijelo se rasteže uzduž i stišće sa strane.</p>
@@ -212,17 +217,17 @@
       <p>Kod zvjezdane crne rupe bio bi razvučen tisućama kilometara prije horizonta. Kroz horizont Sgr A* prošao bi bez osjeta, a rastezanje bi te dočekalo tek dublje unutra.</p>
       <p class="note">Visina tijela ℓ = 2 m. Prag „opasno” postavljen je ilustrativno na 10 g razlike između glave i stopala.</p>
     </div>
-    <div class="inst">
+    <div class="inst card">
       <div class="ctl">
         <div class="row"><label class="label" for="tdSlider">Masa crne rupe</label><output id="tdOut" class="num">10 M☉</output></div>
         <input type="range" id="tdSlider" min="0" max="10.5" step="0.01" value="1">
       </div>
       <div class="tidal-vis">
         <svg viewBox="0 0 120 220" aria-hidden="true">
-          <line x1="60" y1="4" x2="60" y2="216" stroke="#1c2130" stroke-dasharray="3 4"/>
+          <line x1="60" y1="4" x2="60" y2="216" style="stroke:var(--line-2)" stroke-dasharray="3 4"/>
           <g id="bodyG" transform="translate(60 110)">
-            <ellipse id="bodyE" cx="0" cy="0" rx="14" ry="44" fill="#ffad5c" opacity=".85"/>
-            <circle id="bodyH" cx="0" cy="-54" r="9" fill="#ebe6dc"/>
+            <ellipse id="bodyE" cx="0" cy="0" rx="14" ry="44" style="fill:var(--accent)" opacity=".85"/>
+            <circle id="bodyH" cx="0" cy="-54" r="9" style="fill:var(--ink)"/>
           </g>
         </svg>
         <div class="readouts" style="grid-template-columns:1fr">
@@ -237,7 +242,7 @@
 </section>
 
 <section class="ch" id="hawking">
-  <div class="ch-head"><div class="ch-num">VI</div><div><span class="label">Kvantna termodinamika</span><h2>Crne rupe nisu potpuno crne</h2></div></div>
+  <div class="ch-head"><span class="ch-tag"><span class="ch-num">06</span>Kvantna termodinamika</span><h2>Crne rupe nisu potpuno crne</h2></div>
   <div class="ch-body">
     <div class="prose">
       <p>Godine 1974. Stephen Hawking spojio je kvantnu teoriju polja s općom relativnošću i pokazao da horizont zrači kao crno tijelo. Crna rupa ima temperaturu, entropiju i polako gubi masu.</p>
@@ -247,7 +252,7 @@
       <p><strong>Entropija</strong> je proporcionalna površini horizonta, ne volumenu (Bekenstein–Hawking). Ta činjenica je jedan od glavnih tragova prema kvantnoj gravitaciji i holografskom principu.</p>
       <p class="note">Hawkingovo zračenje još nije izravno opaženo. Za zvjezdane crne rupe preslabo je za bilo kakav instrument.</p>
     </div>
-    <div class="inst">
+    <div class="inst card">
       <div class="ctl">
         <div class="row"><label class="label" for="hkSlider">Masa</label><output id="hkOut" class="num">—</output></div>
         <input type="range" id="hkSlider" min="8" max="41" step="0.01" value="30.3">
@@ -271,7 +276,7 @@
 </section>
 
 <section class="ch" id="povijest">
-  <div class="ch-head"><div class="ch-num">VII</div><div><span class="label">Od ideje do fotografije</span><h2>Kako smo ih pronašli</h2></div></div>
+  <div class="ch-head"><span class="ch-tag"><span class="ch-num">07</span>Od ideje do fotografije</span><h2>Kako smo ih pronašli</h2></div>
   <div class="ch-body">
     <ol class="tl">
       <li><span class="y">1783</span><div><h3>Tamne zvijezde</h3><p>John Michell u Newtonovoj fizici računa da bi dovoljno masivna zvijezda zadržala vlastitu svjetlost.</p></div></li>
@@ -286,7 +291,7 @@
       <li><span class="y">2020</span><div><h3>Nobelova nagrada</h3><p>Roger Penrose za teoriju nastanka; Reinhard Genzel i Andrea Ghez za otkriće supermasivnog objekta u središtu Mliječne staze.</p></div></li>
       <li><span class="y">2022</span><div><h3>Sgr A*</h3><p>EHT objavljuje sliku crne rupe u središtu naše galaksije.</p></div></li>
     </ol>
-    <div class="inst">
+    <div class="inst card">
       <span class="label">Poznate crne rupe</span>
       <div class="tablewrap">
         <table>
@@ -296,7 +301,7 @@
       </div>
       <p class="note">Mase su zaokružene procjene; Cygnus X-1 prema mjerenju iz 2021., ostatak GW150914 prema analizi LIGO-a.</p>
       <canvas id="gwCanvas" height="150" aria-label="Signal gravitacijskog vala, ilustracija"></canvas>
-      <p class="note" style="border-color:var(--ember)">Ilustracija „chirp” signala: dvije crne rupe spiralno se približavaju, frekvencija i amplituda rastu do spajanja, zatim slijedi kratko „zvonjenje” nove crne rupe.</p>
+      <p class="note accent">Ilustracija „chirp” signala: dvije crne rupe spiralno se približavaju, frekvencija i amplituda rastu do spajanja, zatim slijedi kratko „zvonjenje” nove crne rupe.</p>
     </div>
   </div>
 </section>
@@ -304,7 +309,7 @@
 </main>
 
 <footer>
-  <div class="wrap">Simulacija koristi geodezijsku jednadžbu svjetlosti u Schwarzschildovoj metrici (jedinice R<sub>s</sub> = 1), Shakura–Sunjajevljev temperaturni profil diska te relativistički Doppler i gravitacijski crveni pomak. Rotacija crne rupe (Kerr) nije uključena.</div>
+  <div class="wrap"><span class="brand"><i aria-hidden="true"></i>Horizont događaja</span><p>Simulacija koristi geodezijsku jednadžbu svjetlosti u Schwarzschildovoj metrici (jedinice R<sub>s</sub> = 1), Shakura–Sunjajevljev temperaturni profil diska te relativistički Doppler i gravitacijski crveni pomak. Rotacija crne rupe (Kerr) nije uključena.</p></div>
 </footer>
 <script type="module" src="js/main.js"></script>
 </body>

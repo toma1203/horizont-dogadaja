@@ -5,7 +5,7 @@ function drawTicks(g) {
   let s = '';
   for (let i = 0; i < 60; i++) {
     const a = (i * 6 * Math.PI) / 180, l = i % 5 ? 6 : 12;
-    s += `<line x1="${100 + 86 * Math.sin(a)}" y1="${100 - 86 * Math.cos(a)}" x2="${100 + (86 - l) * Math.sin(a)}" y2="${100 - (86 - l) * Math.cos(a)}" stroke="${i % 5 ? '#2a3042' : '#8e94a6'}" stroke-width="${i % 5 ? 1 : 2}"/>`;
+    s += `<line x1="${100 + 86 * Math.sin(a)}" y1="${100 - 86 * Math.cos(a)}" x2="${100 + (86 - l) * Math.sin(a)}" y2="${100 - (86 - l) * Math.cos(a)}" stroke="${i % 5 ? '#262a36' : '#7f8594'}" stroke-width="${i % 5 ? 1 : 2}"/>`;
   }
   g.innerHTML = s;
 }

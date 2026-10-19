@@ -32,9 +32,11 @@ js/chapters/*.js         po jedan modul za poglavlja I–VII
 - **VII Povijest** — vremenska crta 1783–2022, tablica, ilustrativni chirp signal.
 
 ## Dizajn
-- Jedan namjerno taman izgled (bez svijetle teme): `--void #05060b`, `--panel`, `--line`, `--ink #ebe6dc`, `--dim`, `--ember #ffad5c` (akcent), `--ion #93c9ff` (sekundarni).
-- Fontovi: Bodoni Moda (naslovi, rimski brojevi poglavlja, kurziv), Figtree (tekst), JetBrains Mono (oznake, brojevi).
-- Svako poglavlje: lijevo teorija (`.prose`, formule u `.eq`), desno instrument (`.inst`) s klizačima, canvasom i očitanjima (`.readouts`).
+- Moderan "dashboard" izgled, jedan namjerno taman (bez svijetle teme): `--bg #07080c`, `--panel`, `--line` (rgba bijela), `--ink #f4f5f8`, `--text`, `--dim`, `--accent #b8ff5c` (lime akcent), `--ion #6cc8ff` (sekundarni), `--warn #ff8a4c`. Iste boje u JS-u su u `COL` (util.js).
+- Fontovi: Geist (naslovi i tekst, teški naslovi s uskim razmakom), Geist Mono (oznake, brojevi, canvas tekst).
+- Plutajuća staklena navigacija (pill), kartice `.card` sa zaobljenjem `--r-lg`, poglavlja označena kao `01`–`07` (`.ch-tag` + `.ch-num`).
+- Svako poglavlje: lijevo teorija (`.prose`, formule u `.eq`), desno instrument (`.inst.card`) s klizačima, canvasom i očitanjima (`.readouts`).
+- Klizači imaju ispunu kroz `--p`; nakon programske promjene `.value` pozovi `paintRange(el)` iz util.js.
 - Brojevi uvijek kroz `sci()` / `len()` / `dur()` iz util.js (decimalni zarez, ×10ⁿ).
 - Animacije idu kroz `addAnim(el, fn)` (rade samo dok je element vidljiv) i poštuju `reduceMotion`.
 - Mora raditi na mobitelu (~400 px) bez horizontalnog scrolla.

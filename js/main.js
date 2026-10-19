@@ -1,5 +1,5 @@
 // Ulazna točka: inicijalizira simulaciju i sva poglavlja, zatim pokreće zajedničku petlju animacije.
-import { startLoop } from './util.js';
+import { startLoop, paintRange } from './util.js';
 import { initBlackHole } from './blackhole/renderer.js';
 import { initRadius } from './chapters/radius.js';
 import { initAnatomy } from './chapters/anatomy.js';
@@ -19,4 +19,8 @@ initTidal();
 initHawking();
 initHistory();
 initNav();
+
+// Ispuna staze svih klizača
+document.querySelectorAll('input[type=range]').forEach(paintRange);
+document.addEventListener('input', (e) => { if (e.target.type === 'range') paintRange(e.target); });
 startLoop();

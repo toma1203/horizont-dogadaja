@@ -75,7 +75,7 @@ export function initOrbits() {
     const X = (r) => pad.l + ((r - rMin) / (rMax - rMin)) * (w - pad.l - pad.r);
     const Y = (v) => pad.t + (1 - (v - yMin) / (yMax - yMin)) * (h - pad.t - pad.b);
 
-    ctx.font = '10px "JetBrains Mono", monospace';
+    ctx.font = '10px "Geist Mono", monospace';
     ctx.fillStyle = COL.dim; ctx.strokeStyle = COL.line; ctx.lineWidth = 1;
     [0.9, 1, 1.1].forEach((v) => {
       ctx.beginPath(); ctx.moveTo(pad.l, Y(v)); ctx.lineTo(w - pad.r, Y(v)); ctx.stroke();
@@ -84,9 +84,9 @@ export function initOrbits() {
     [2, 6, 10, 20, 30, 40].forEach((r) => { ctx.textAlign = 'center'; ctx.fillText(r, X(r), h - 8); });
     ctx.textAlign = 'left'; ctx.fillText('r / M', w - pad.r - 36, h - 8);
 
-    ctx.strokeStyle = 'rgba(255,173,92,.35)'; ctx.setLineDash([3, 4]);
+    ctx.strokeStyle = 'rgba(184,255,92,.35)'; ctx.setLineDash([3, 4]);
     ctx.beginPath(); ctx.moveTo(X(6), pad.t); ctx.lineTo(X(6), h - pad.b); ctx.stroke(); ctx.setLineDash([]);
-    ctx.fillStyle = 'rgba(255,173,92,.6)'; ctx.fillText('ISCO', X(6) + 4, pad.t + 10);
+    ctx.fillStyle = 'rgba(184,255,92,.6)'; ctx.fillText('ISCO', X(6) + 4, pad.t + 10);
 
     ctx.save();
     ctx.beginPath(); ctx.rect(pad.l, pad.t, w - pad.l - pad.r, h - pad.t - pad.b); ctx.clip();
@@ -99,7 +99,7 @@ export function initOrbits() {
     ctx.stroke();
 
     const E2 = V2(r0, L);
-    ctx.strokeStyle = COL.ember; ctx.lineWidth = 1.2; ctx.setLineDash([5, 4]);
+    ctx.strokeStyle = COL.accent; ctx.lineWidth = 1.2; ctx.setLineDash([5, 4]);
     ctx.beginPath(); ctx.moveTo(pad.l, Y(E2)); ctx.lineTo(w - pad.r, Y(E2)); ctx.stroke(); ctx.setLineDash([]);
 
     const d = 1 - 12 / (L * L);
@@ -111,11 +111,11 @@ export function initOrbits() {
     }
 
     const cr = path.length ? path[Math.min(path.length - 1, Math.floor(k))][0] : r0;
-    ctx.fillStyle = COL.ember; ctx.beginPath(); ctx.arc(X(cr), Y(E2), 4.5, 0, 7); ctx.fill();
+    ctx.fillStyle = COL.accent; ctx.beginPath(); ctx.arc(X(cr), Y(E2), 4.5, 0, 7); ctx.fill();
     ctx.restore();
 
     ctx.fillStyle = COL.dim; ctx.textAlign = 'left'; ctx.fillText('V²eff', pad.l + 4, pad.t + 10);
-    ctx.fillStyle = COL.ember; ctx.fillText('E²', w - pad.r - 20, Y(E2) - 5);
+    ctx.fillStyle = COL.accent; ctx.fillText('E²', w - pad.r - 20, Y(E2) - 5);
   }
 
   function drawOrbit(t, dt) {
@@ -128,16 +128,16 @@ export function initOrbits() {
     const s = (Math.min(w, h) * 0.46) / rmax, cx = w / 2, cy = h / 2;
 
     ctx.lineWidth = 1;
-    [[3, 'rgba(147,201,255,.35)'], [6, 'rgba(255,173,92,.35)']].forEach(([r, c]) => {
+    [[3, 'rgba(147,201,255,.35)'], [6, 'rgba(184,255,92,.35)']].forEach(([r, c]) => {
       ctx.strokeStyle = c; ctx.setLineDash([3, 4]);
       ctx.beginPath(); ctx.arc(cx, cy, r * s, 0, 7); ctx.stroke();
     });
     ctx.setLineDash([]);
     const g = ctx.createRadialGradient(cx, cy, 2 * s, cx, cy, 2 * s * 2.2);
-    g.addColorStop(0, 'rgba(255,173,92,.35)'); g.addColorStop(1, 'rgba(255,173,92,0)');
+    g.addColorStop(0, 'rgba(184,255,92,.35)'); g.addColorStop(1, 'rgba(184,255,92,0)');
     ctx.fillStyle = g; ctx.beginPath(); ctx.arc(cx, cy, 2 * s * 2.2, 0, 7); ctx.fill();
     ctx.fillStyle = '#000'; ctx.beginPath(); ctx.arc(cx, cy, 2 * s, 0, 7); ctx.fill();
-    ctx.strokeStyle = COL.ember; ctx.stroke();
+    ctx.strokeStyle = COL.accent; ctx.stroke();
 
     // Brzina napredovanja ∝ dφ/dτ = L·u² (približno Keplerov tempo)
     const L = +lSlider.value;
@@ -157,7 +157,7 @@ export function initOrbits() {
       if (i % 3 !== 0 && i !== ki) continue;
       const a = (i - start) / (ki - start + 1);
       const p0 = path[Math.max(start, i - 3)], p1 = path[i];
-      ctx.strokeStyle = `rgba(255,173,92,${0.08 + 0.8 * a * a})`;
+      ctx.strokeStyle = `rgba(184,255,92,${0.08 + 0.8 * a * a})`;
       ctx.beginPath();
       ctx.moveTo(cx + p0[0] * s * Math.cos(p0[1]), cy - p0[0] * s * Math.sin(p0[1]));
       ctx.lineTo(cx + p1[0] * s * Math.cos(p1[1]), cy - p1[0] * s * Math.sin(p1[1]));
@@ -166,7 +166,7 @@ export function initOrbits() {
     const p = path[ki];
     ctx.fillStyle = COL.ink; ctx.beginPath();
     ctx.arc(cx + p[0] * s * Math.cos(p[1]), cy - p[0] * s * Math.sin(p[1]), 4, 0, 7); ctx.fill();
-    ctx.font = '10px "JetBrains Mono", monospace'; ctx.fillStyle = COL.dim; ctx.textAlign = 'left';
+    ctx.font = '10px "Geist Mono", monospace'; ctx.fillStyle = COL.dim; ctx.textAlign = 'left';
     ctx.fillText(`r = ${loc(p[0])} M`, 10, 16);
 
     if (Math.floor(t * 10) % 3 === 0) drawPotential();

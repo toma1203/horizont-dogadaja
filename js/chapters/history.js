@@ -22,7 +22,7 @@ export function initHistory() {
 
     const T = 4.0;                                         // trenutak spajanja (s, ilustrativno)
     const tm = reduceMotion ? T * 0.98 : t % (T + 1.2);    // dokle je signal "stigao"
-    ctx.lineWidth = 1.6; ctx.strokeStyle = COL.ember; ctx.beginPath();
+    ctx.lineWidth = 1.6; ctx.strokeStyle = COL.accent; ctx.beginPath();
     for (let i = 0; i <= w; i++) {
       const tt = (i / w) * (T + 0.6);
       if (tt > tm) break;
@@ -40,7 +40,7 @@ export function initHistory() {
       i ? ctx.lineTo(i, cy - y * h * 0.42) : ctx.moveTo(i, cy - y * h * 0.42);
     }
     ctx.stroke();
-    ctx.font = '10px "JetBrains Mono", monospace'; ctx.fillStyle = COL.dim;
+    ctx.font = '10px "Geist Mono", monospace'; ctx.fillStyle = COL.dim;
     ctx.textAlign = 'left'; ctx.fillText('naprezanje h(t)', 8, 14);
     ctx.textAlign = 'right'; ctx.fillText('spajanje', (w * T) / (T + 0.6) - 4, h - 8);
   });

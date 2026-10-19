@@ -14,11 +14,16 @@ export const LY = 9.461e15;
 
 // Boje za crtanje na canvasu (usklađene s tokenima u css/style.css)
 export const COL = {
-  ink: '#ebe6dc', dim: '#8e94a6', line: '#1c2130',
-  ember: '#ffad5c', ion: '#93c9ff', void: '#05060b',
+  ink: '#f4f5f8', dim: '#7f8594', line: '#1d2029',
+  accent: '#b8ff5c', ion: '#6cc8ff', void: '#05060a',
 };
 
 export const $ = (id) => document.getElementById(id);
+
+/** Postavlja --p (0–100 %) za ispunu staze klizača; zovi nakon programske promjene vrijednosti. */
+export function paintRange(r) {
+  r.style.setProperty('--p', ((r.value - r.min) / (r.max - r.min)) * 100 + '%');
+}
 
 const SUP = { '-': '⁻', 0: '⁰', 1: '¹', 2: '²', 3: '³', 4: '⁴', 5: '⁵', 6: '⁶', 7: '⁷', 8: '⁸', 9: '⁹' };
 export const sup = (n) => String(n).split('').map((ch) => SUP[ch] || ch).join('');
@@ -58,7 +63,8 @@ export function dur(s) {
 export function fitCanvas(cv) {
   const dpr = Math.min(window.devicePixelRatio || 1, 2);
   const w = cv.clientWidth;
-  const h = +cv.getAttribute('height');
+  // Atribut height se prepisuje (× DPR), pa izvornu visinu pamtimo pri prvom pozivu.
+  const h = +(cv.dataset.h ??= cv.getAttribute('height'));
   cv.style.height = h + 'px';
   if (cv.width !== Math.round(w * dpr) || cv.height !== Math.round(h * dpr)) {
     cv.width = Math.round(w * dpr);
